@@ -11,11 +11,17 @@ var template = (
   </div>
 );
 
+var user = {
+  name: 'Stephanie',
+  age: 28,
+  location: 'Portland'
+};
+
 var templateTwo = (
   <div>
-    <h1>Stephanie Smith</h1>
-    <p>Age: 28</p>
-    <p>Location: Portland</p>
+    <h1>{user.name}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
   </div>
 )
 const appRoot = document.getElementById('app');
