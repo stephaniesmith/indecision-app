@@ -2,18 +2,23 @@
 
 console.log('app.js hello world');
 
+var app = {
+  title: 'Indecision App',
+  subTitle: 'This is some text'
+};
+
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    app.title
   ),
   React.createElement(
     'p',
     null,
-    'This is some text'
+    app.subTitle
   ),
   React.createElement(
     'ol',
@@ -60,4 +65,4 @@ var templateTwo = React.createElement(
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

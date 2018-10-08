@@ -1,9 +1,14 @@
 console.log('app.js hello world');
 
+var app = {
+  title: 'Indecision App',
+  subTitle: 'This is some text'
+}
+
 var template = (
   <div>
-    <h1>Indecision App</h1>
-    <p>This is some text</p>
+    <h1>{app.title}</h1>
+    <p>{app.subTitle}</p>
     <ol>
       <li>Item one</li>
       <li>Item two</li>
@@ -26,4 +31,4 @@ var templateTwo = (
 )
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
