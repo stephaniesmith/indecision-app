@@ -1,12 +1,12 @@
 console.log('app.js hello world');
 
-var app = {
+const app = {
   title: 'Indecision App',
   subTitle: 'This is some text',
   options: ['One', 'Two']
 }
 
-var template = (
+const template = (
   <div>
     <h1>{app.title}</h1>
     {app.subTitle && <p>{app.subTitle}</p>}
@@ -18,7 +18,7 @@ var template = (
   </div>
 );
 
-var user = {
+const user = {
   name: 'Stephanie',
   age: 29,
   location: 'Portland'
@@ -28,7 +28,7 @@ function getLocation(location) {
   if(location) return <p>Location: {location}</p>;
 }
 
-var templateTwo = (
+const templateTwo = (
   <div>
     <h1>{user.name ? user.name : 'Anonymous'}</h1>
     {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
