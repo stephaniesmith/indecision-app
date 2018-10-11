@@ -29,6 +29,13 @@ const onMakeDecision = () => {
   alert(option);
 }
 
+let visible = false;
+
+const toggleView = () => {
+  visible = !visible ? true: false;
+  render();
+}
+
 const appRoot = document.getElementById('app');
 
 const render = () => {
@@ -52,7 +59,15 @@ const render = () => {
     </div>
   );
 
-  ReactDOM.render(template, appRoot);
+  const templateTwo = (
+    <div>
+      <h1>Visibility Toggle</h1>
+      <button onClick={toggleView}>{visible ? 'Hide details' : 'Show details'}</button>
+      {visible && <p>Can you see me?</p>}
+    </div>
+  )
+
+  ReactDOM.render(templateTwo, appRoot);
 }
 
 render()
