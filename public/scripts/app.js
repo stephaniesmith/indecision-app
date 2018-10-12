@@ -31,13 +31,6 @@ var onMakeDecision = function onMakeDecision() {
   alert(option);
 };
 
-var visible = false;
-
-var toggleView = function toggleView() {
-  visible = !visible ? true : false;
-  render();
-};
-
 var appRoot = document.getElementById('app');
 
 var render = function render() {
@@ -92,27 +85,7 @@ var render = function render() {
     )
   );
 
-  var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      'Visibility Toggle'
-    ),
-    React.createElement(
-      'button',
-      { onClick: toggleView },
-      visible ? 'Hide details' : 'Show details'
-    ),
-    visible && React.createElement(
-      'p',
-      null,
-      'Can you see me?'
-    )
-  );
-
-  ReactDOM.render(templateTwo, appRoot);
+  ReactDOM.render(template, appRoot);
 };
 
 render();
