@@ -1,14 +1,44 @@
 class IndecisionApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    this.handlePick = this.handlePick.bind(this);
+    this.state = {
+      options: ['Stuff 1', 'Stuff 2', 'Stuff 3']
+    }
+  }
+
+  handleDeleteOptions() {
+    this.setState(() => {
+      return {
+        options: []
+      };
+    });
+  }
+
+  handlePick() {
+    const { options } = this.state;
+    const index = Math.floor(Math.random() * options.length);
+
+    alert(options[index]);
+  }
+
   render() {
     const title = 'Indecision';
     const subTitle = 'Decide some stuff.';
-    const options = ['Stuff 1', 'Stuff 2', 'Stuff 3'];
+    const { options } = this.state;
 
     return (
       <div>
         <Header title={title} subTitle={subTitle}/>
-        <Action/>
-        <Options options={options}/>
+        <Action 
+          hasOptions={options.length > 0}
+          handlePick={this.handlePick}
+        />
+        <Options 
+          options={options}
+          handleDeleteOptions={this.handleDeleteOptions}
+        />
         <AddOption/>
       </div>
     )
@@ -28,14 +58,17 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
-  handlePick() {
-    alert('handle')
-  }
-
   render() {
+    const { hasOptions, handlePick } = this.props;
+    
     return (
       <div>
-        <button onClick={this.handlePick}>What should I do?</button>
+        <button 
+          onClick={handlePick}
+          disabled={!hasOptions}
+        >
+          What should I do?
+        </button>
       </div>
     )
   }
@@ -43,20 +76,12 @@ class Action extends React.Component {
 
 class Options extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.handleRemoveAll = this.handleRemoveAll.bind(this);
-  }
-
-  handleRemoveAll() {
-    console.log('clicked');
-  }
   render() {
-    const { options } = this.props;
+    const { options, handleDeleteOptions } = this.props;
 
     return (
       <div>
-        <button onClick={this.handleRemoveAll}>Remove All</button>
+        <button onClick={handleDeleteOptions}>Remove All</button>
         {options.map((option, index) => <Option key={index} option={option}/>)}
       </div>
     )
