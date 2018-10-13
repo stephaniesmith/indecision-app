@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -11,37 +11,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Counter = function (_React$Component) {
   _inherits(Counter, _React$Component);
 
-  function Counter() {
+  function Counter(props) {
     _classCallCheck(this, Counter);
 
-    return _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+
+    _this.handleAddOne = _this.handleAddOne.bind(_this);
+    _this.handleSubOne = _this.handleSubOne.bind(_this);
+    _this.handleReset = _this.handleReset.bind(_this);
+    return _this;
   }
 
   _createClass(Counter, [{
-    key: "render",
+    key: 'handleAddOne',
+    value: function handleAddOne() {}
+  }, {
+    key: 'handleSubOne',
+    value: function handleSubOne() {}
+  }, {
+    key: 'handleReset',
+    value: function handleReset() {}
+  }, {
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h1",
+          'h1',
           null,
-          "Count: "
+          'Count: '
         ),
         React.createElement(
-          "button",
-          null,
-          "+1"
+          'button',
+          { onClick: this.handleAddOne },
+          '+1'
         ),
         React.createElement(
-          "button",
-          null,
-          "-1"
+          'button',
+          { onClick: this.handleSubOne },
+          '-1'
         ),
         React.createElement(
-          "button",
-          null,
-          "reset"
+          'button',
+          { onClick: this.handleReset },
+          'reset'
         )
       );
     }
@@ -49,6 +63,8 @@ var Counter = function (_React$Component) {
 
   return Counter;
 }(React.Component);
+
+ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
 
 // console.log('app.js hello world');
 

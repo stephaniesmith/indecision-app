@@ -1,15 +1,35 @@
 class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleAddOne = this.handleAddOne.bind(this);
+    this.handleSubOne = this.handleSubOne.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+  handleAddOne() {
+    
+  }
+
+  handleSubOne() {
+
+  }
+
+  handleReset() {
+
+  }
+
   render() {
     return (
       <div>
         <h1>Count: </h1>
-        <button>+1</button>
-        <button>-1</button>
-        <button>reset</button>
+        <button onClick={this.handleAddOne}>+1</button>
+        <button onClick={this.handleSubOne}>-1</button>
+        <button onClick={this.handleReset}>reset</button>
       </div>
     )
   }
 }
+
+ReactDOM.render(<Counter/>, document.getElementById('app'));
 
 // console.log('app.js hello world');
 
