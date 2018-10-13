@@ -89,7 +89,62 @@ var Counter = function (_React$Component) {
   return Counter;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
+var Visibility = function (_React$Component2) {
+  _inherits(Visibility, _React$Component2);
+
+  function Visibility(props) {
+    _classCallCheck(this, Visibility);
+
+    var _this2 = _possibleConstructorReturn(this, (Visibility.__proto__ || Object.getPrototypeOf(Visibility)).call(this, props));
+
+    _this2.handleToggle = _this2.handleToggle.bind(_this2);
+    _this2.state = {
+      visibility: false
+    };
+    return _this2;
+  }
+
+  _createClass(Visibility, [{
+    key: 'handleToggle',
+    value: function handleToggle() {
+      this.setState(function (prevState) {
+        return {
+          visibility: !prevState.visibility
+        };
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var visibility = this.state.visibility;
+
+
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'h1',
+          null,
+          'Visibility'
+        ),
+        React.createElement(
+          'button',
+          { onClick: this.handleToggle },
+          visibility ? 'Hide' : 'Show'
+        ),
+        visibility && React.createElement(
+          'p',
+          null,
+          'Can you see me?!'
+        )
+      );
+    }
+  }]);
+
+  return Visibility;
+}(React.Component);
+
+ReactDOM.render(React.createElement(Visibility, null), document.getElementById('app'));
 
 // console.log('app.js hello world');
 

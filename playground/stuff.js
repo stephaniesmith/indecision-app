@@ -46,7 +46,37 @@ class Counter extends React.Component {
   }
 }
 
-ReactDOM.render(<Counter/>, document.getElementById('app'));
+class Visibility extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleToggle = this.handleToggle.bind(this);
+    this.state = {
+      visibility: false
+    }
+  }
+  handleToggle() {
+    this.setState(prevState => {
+      return { 
+        visibility: !prevState.visibility
+      }
+    })
+  }
+
+  render() {
+    const { visibility } = this.state
+
+    return (
+      <div>
+        <h1>Visibility</h1>
+        <button onClick={this.handleToggle}>{visibility ? 'Hide' : 'Show'}</button>
+        {visibility && <p>Can you see me?!</p>}
+      </div>
+    )
+  }
+}
+
+
+ReactDOM.render(<Visibility/>, document.getElementById('app'));
 
 // console.log('app.js hello world');
 
