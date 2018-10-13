@@ -3,8 +3,9 @@ class IndecisionApp extends React.Component {
     super(props);
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
     this.handlePick = this.handlePick.bind(this);
+    this.handleAddOption = this.handleAddOption.bind(this);
     this.state = {
-      options: ['Stuff 1', 'Stuff 2', 'Stuff 3']
+      options: []
     }
   }
 
@@ -23,6 +24,14 @@ class IndecisionApp extends React.Component {
     alert(options[index]);
   }
 
+  handleAddOption(option) {
+    this.setState(prevState => {
+      return {
+        options: prevState.options.concat(option)
+      };
+    })
+  }
+
   render() {
     const title = 'Indecision';
     const subTitle = 'Decide some stuff.';
@@ -39,7 +48,9 @@ class IndecisionApp extends React.Component {
           options={options}
           handleDeleteOptions={this.handleDeleteOptions}
         />
-        <AddOption/>
+        <AddOption
+          handleAddOption={this.handleAddOption}
+        />
       </div>
     )
   }
@@ -100,13 +111,19 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleAddOption = this.handleAddOption.bind(this);
+  }
+
   handleAddOption(e) {
+    const { handleAddOption } = this.props;
     e.preventDefault();
 
     const option = e.target.elements.option.value.trim();
 
     if(option) {
-      alert(option);
+      handleAddOption(option);
     }
   }
 
