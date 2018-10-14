@@ -5,15 +5,40 @@ import Header from './Header'
 import Action from './Action'
 
 export default class IndecisionApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.state = {
-      options: props.options
+
+  state = {
+    options: []
+  }
+  
+  handleDeleteOptions = () => {
+    this.setState(() => ({ options: [] }));
+  }
+
+  handleDeleteOption = optionToRemove => {
+    this.setState(prevState => {
+      return {
+        options: prevState.options.filter(option => optionToRemove !== option)
+      }
+    });
+  }
+
+  handlePick = () => {
+    const { options } = this.state;
+    const index = Math.floor(Math.random() * options.length);
+
+    alert(options[index]);
+  }
+
+  handleAddOption = option => {
+    const { options } = this.state;
+    if(!option) {
+      return 'Enter valid value to add item'
+    } else if (options.indexOf(option) > -1) {
+      return 'This option already exists'
     }
+    this.setState(prevState => ({
+        options: prevState.options.concat(option)
+      }))
   }
 
   componentDidMount() {
@@ -39,38 +64,6 @@ export default class IndecisionApp extends React.Component {
   componentWillUnmount() {
     console.log('Goodbye!');
   }
-  
-  
-  handleDeleteOptions() {
-    this.setState(() => ({ options: [] }));
-  }
-
-  handleDeleteOption(optionToRemove) {
-    this.setState(prevState => {
-      return {
-        options: prevState.options.filter(option => optionToRemove !== option)
-      }
-    });
-  }
-
-  handlePick() {
-    const { options } = this.state;
-    const index = Math.floor(Math.random() * options.length);
-
-    alert(options[index]);
-  }
-
-  handleAddOption(option) {
-    const { options } = this.state;
-    if(!option) {
-      return 'Enter valid value to add item'
-    } else if (options.indexOf(option) > -1) {
-      return 'This option already exists'
-    }
-    this.setState(prevState => ({
-        options: prevState.options.concat(option)
-      }))
-  }
 
   render() {
     const subTitle = 'Decide some stuff.';
@@ -94,8 +87,4 @@ export default class IndecisionApp extends React.Component {
       </div>
     )
   }
-}
-
-IndecisionApp.defaultProps = {
-  options: []
 }
