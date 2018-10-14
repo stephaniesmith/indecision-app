@@ -5,9 +5,27 @@ class Counter extends React.Component {
     this.handleSubOne = this.handleSubOne.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.state = {
-      count: props.count
+      count: 0
     }
   }
+
+  componentDidMount() {
+    const stringCount = localStorage.getItem('count');
+    const count = parseInt(stringCount, 10);
+
+    if(!isNaN(count)) {
+      this.setState(() => ({ count }))
+    }
+  }
+  
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.count !== this.state.count) {
+      localStorage.setItem('count', this.state.count);
+    }
+  }
+
+
   handleAddOne() {
     this.setState(prevState => {
       return { 
@@ -44,10 +62,6 @@ class Counter extends React.Component {
       </div>
     )
   }
-}
-
-Counter.defaultProps = {
-  count: 0
 }
 
 class Visibility extends React.Component {
