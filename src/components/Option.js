@@ -2,6 +2,7 @@ import React from 'react';
 
 const Option = props => {
   const { option, handleDeleteOption } = props;
+  
   return (
     <div>
       {option}
