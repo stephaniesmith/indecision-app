@@ -7,6 +7,7 @@ const OptionModal = props => {
   return (
     <Modal
       isOpen={!!selectedOption}
+      onRequestClose={handleClose}
       contentLabel="Selected Option"
     >
       <h3>Selected Option</h3>
