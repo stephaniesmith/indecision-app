@@ -26,7 +26,7 @@ export default class AddOption extends React.Component {
       {error && <p>{error}</p>}
         <form onSubmit={this.handleAddOption}>
           <input type="text" name="option"/>
-          <button>Submit</button>
+          <button className="button">Submit</button>
         </form>
       </div>
     )
