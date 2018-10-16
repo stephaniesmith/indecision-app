@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Option = props => {
-  const { option, handleDeleteOption } = props;
+  const { option, handleDeleteOption, count } = props;
   
   return (
-    <div>
-      {option}
+    <div className="option">
+      <p className="option__text">{count}. {option}</p>
       <button
         className="button button--link"
         onClick={e => {
