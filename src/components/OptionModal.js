@@ -9,6 +9,7 @@ const OptionModal = props => {
       isOpen={!!selectedOption}
       onRequestClose={handleClose}
       contentLabel="Selected Option"
+      closeTimeoutMS={200}
     >
       <h3>Selected Option</h3>
       {selectedOption && <p>{selectedOption}</p>}
